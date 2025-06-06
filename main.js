@@ -239,11 +239,19 @@ function fetchLeaderboard() {
 
 // Submit score button
 document.getElementById('submitScoreButton').addEventListener('click', () => {
-  const name = document.getElementById('playerNameInput').value.trim();
+  const nameInput = document.getElementById('playerNameInput');
+  const button = document.getElementById('submitScoreButton');
+  const name = nameInput.value.trim();
+
+  if (!name) return alert('Please enter a name.');
+
+  button.disabled = true;
+  button.textContent = 'Submitted!';
+
   submitScoreToGoogleSheets(name, score);
-  document.getElementById('submitScoreButton').disabled = true;
   setTimeout(fetchLeaderboard, 1000);
 });
+
 
 // Restart
 document.getElementById('restartButton').addEventListener('click', () => {
