@@ -46,6 +46,8 @@ const fruitTypes = [
   { name: 'Pickle', radius: 90, sprite: 'assets/images/watermelon.png' }
 ];
 
+const rarePeachSprite = 'assets/images/peach_rare.png';
+
 renderEvolutionChart();
 
 // Game state
@@ -101,20 +103,29 @@ function getRandomTier() {
 // Create fruit
 function createFruit(x, y, tier) {
   const type = fruitTypes[tier];
+
+  // 🍑 Randomly select rare sprite for peach (tier 3)
+  let sprite = type.sprite;
+  if (tier === 3 && Math.random() < 0.05) {
+    sprite = rarePeachSprite;
+  }
+
   const scale = (type.radius * 2) / 250;
   const body = Bodies.circle(x, y, type.radius, {
     restitution: 0.3,
     friction: 0.1,
     render: {
       sprite: {
-        texture: type.sprite,
+        texture: sprite,
         xScale: scale,
         yScale: scale
       }
     }
   });
+
   return { body, tier };
 }
+
 
 // UI updates
 function updateNextFruitPreview() {
