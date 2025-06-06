@@ -82,18 +82,21 @@ window.addEventListener('resize', resizeConfettiCanvas);
 
 // Weighted random tier
 function getRandomTier() {
-  const weights = [0.35, 0.25, 0.15, 0.15, 0.10];
+  // Weighted drop chance for tiers 0–6 (cherry to melon)
+  const weights = [0.30, 0.20, 0.15, 0.13, 0.10, 0.07, 0.05]; // sum = 1.00
   const cumulative = [];
   weights.reduce((acc, w, i) => {
     cumulative[i] = acc + w;
     return cumulative[i];
   }, 0);
+
   const rand = Math.random();
   for (let i = 0; i < cumulative.length; i++) {
     if (rand < cumulative[i]) return i;
   }
   return 0;
 }
+
 
 // Create fruit
 function createFruit(x, y, tier) {
