@@ -36,14 +36,14 @@ World.add(world, [ground, leftWall, rightWall]);
 
 // Fruit types
 const fruitTypes = [
-  { name: 'Benny', radius: 16, sprite: 'assets/images/cherry.png' },
-  { name: 'Tony', radius: 22, sprite: 'assets/images/strawberry.png' },
-  { name: 'Ryan', radius: 30, sprite: 'assets/images/grape.png' },
-  { name: 'Kinder', radius: 38, sprite: 'assets/images/peach.png' },
-  { name: 'Gibbo', radius: 46, sprite: 'assets/images/orange.png' },
-  { name: 'Jordan', radius: 55, sprite: 'assets/images/apple.png' },
-  { name: 'Mox', radius: 66, sprite: 'assets/images/melon.png' },
-  { name: 'Pickle', radius: 80, sprite: 'assets/images/watermelon.png' }
+  { name: 'Benny', radius: 26, sprite: 'assets/images/cherry.png' },
+  { name: 'Tony', radius: 32, sprite: 'assets/images/strawberry.png' },
+  { name: 'Ryan', radius: 40, sprite: 'assets/images/grape.png' },
+  { name: 'Kinder', radius: 48, sprite: 'assets/images/peach.png' },
+  { name: 'Gibbo', radius: 56, sprite: 'assets/images/orange.png' },
+  { name: 'Jordan', radius: 65, sprite: 'assets/images/apple.png' },
+  { name: 'Mox', radius: 76, sprite: 'assets/images/melon.png' },
+  { name: 'Pickle', radius: 90, sprite: 'assets/images/watermelon.png' }
 ];
 
 renderEvolutionChart();
