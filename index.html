@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Suika Game Clone</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- UI: Score -->
+<div id="scoreContainer">
+  Score: <span id="scoreValue">0</span><br />
+  High Score: <span id="highScoreValue">0</span>
+</div>
+
+  <!-- UI: Watermelon counter -->
+  <div id="watermelonCountContainer">
+    Pickles Merged: <span id="watermelonCount">0</span>
+  </div>
+
+  <!-- UI: Next fruit preview -->
+  <div id="nextFruitContainer">
+    <span>Next Fruit:</span>
+    <img id="nextFruitImage" src="" alt="Next Fruit" width="40" height="40" />
+  </div>
+
+  <!-- Celebration popup -->
+  <div id="celebrationMessage">🎉 You made a pickle merge! 🎉</div>
+
+  <!-- Game container (confetti + game canvas stacked) -->
+  <div id="gameContainer">
+    <canvas id="confettiCanvas"></canvas>
+    <canvas id="gameCanvas" width="480" height="640"></canvas>
+  </div>
+
+  <!-- Fruit evolution chart -->
+  <div id="evolutionChart"></div>
+
+  <!-- Game logic -->
+  <script src="main.js"></script>
+</body>
+</html>
