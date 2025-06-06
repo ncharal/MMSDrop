@@ -212,7 +212,7 @@ function triggerGameOver() {
 }
 
 // Leaderboard submission + fetch
-const LEADERBOARD_URL = 'https://script.google.com/macros/s/AKfycby5rR64opQYb4elGBr9mCgkSOS4YS6xCu6dsbJELRTNszMgaK0jMW-bOK5ni4fcNP0mhA/exec';
+const LEADERBOARD_URL = 'https://script.google.com/macros/s/AKfycbz1xAOUv9x8IxpCQrx7zLs8bYVBvILe4G7-j4y1oYo9WqtA-pwV9JjLSplFMK-mywwmPQ/exec';
 
 function submitScoreToGoogleSheets(name, score) {
   if (!name) return;
