@@ -4,46 +4,50 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
   position: relative;
+  color: #fff;
 }
 
-@media (max-width: 600px) {
-  #scoreContainer,
-  #watermelonCountContainer,
-  #nextFruitContainer {
-    font-size: 12px;
-    padding: 4px 8px;
-  }
-
-  #celebrationMessage {
-    font-size: 18px;
-    padding: 12px 20px;
-  }
-
-  #evolutionChart {
-    flex-direction: column;
-    font-size: 11px;
-  }
+#topUI {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 480px;
+  margin: 10px auto 0;
+  padding: 0 10px;
+  gap: 10px;
 }
 
-/* Game canvas container */
+#scoreContainer,
+#watermelonCountContainer,
+#nextFruitContainer {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #333;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 #gameContainer {
   position: relative;
-  width: 90vw;
+  width: 100vw;
   max-width: 480px;
-  aspect-ratio: 3/4;
-  margin: 80px auto 20px;
+  aspect-ratio: 3 / 4;
+  margin: 10px auto 20px;
 }
 
-#gameCanvas,
-#confettiCanvas {
+#gameCanvas {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
+  background-color: #fffbe6;
+  border: 3px solid #333;
   width: 100%;
   height: 100%;
 }
 
-/* Confetti canvas layered above game */
 #confettiCanvas {
   position: absolute;
   top: 0;
@@ -51,9 +55,10 @@ body {
   z-index: 2;
   pointer-events: none;
   background: transparent;
+  width: 100%;
+  height: 100%;
 }
 
-/* Celebration popup */
 #celebrationMessage {
   position: absolute;
   top: 50%;
@@ -61,7 +66,7 @@ body {
   transform: translate(-50%, -50%);
   font-size: 24px;
   color: #ff4d4f;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 20px 30px;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -69,49 +74,46 @@ body {
   display: none;
 }
 
-/* Score */
-#scoreContainer {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #333;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6px 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Watermelon counter */
-#watermelonCountContainer {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  color: #333;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6px 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Next fruit preview */
-#nextFruitContainer {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: #333;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6px 10px;
-  border-radius: 8px;
-  display: flex;
+#gameOverOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  display: none;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-/* Evolution chart */
+#gameOverContent {
+  background: #fff;
+  color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+#gameOverContent input {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#gameOverContent button {
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 6px;
+  border: none;
+  border-radius: 8px;
+  background: #40a9ff;
+  color: white;
+  cursor: pointer;
+}
+
 #evolutionChart {
   margin-top: 20px;
   display: flex;
@@ -123,7 +125,6 @@ body {
   color: #fff;
 }
 
-/* Evolution items */
 .evolution-item {
   display: flex;
   flex-direction: column;
@@ -135,3 +136,58 @@ body {
   width: 40px;
   height: 40px;
 }
+
+@media (max-width: 600px) {
+  #scoreContainer,
+  #watermelonCountContainer,
+  #nextFruitContainer {
+    font-size: 12px;
+    padding: 4px 6px;
+    width: 100%;
+    text-align: center;
+  }
+
+  #topUI {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #celebrationMessage {
+    font-size: 18px;
+    padding: 12px 18px;
+  }
+
+  #evolutionChart {
+    flex-direction: column;
+    font-size: 11px;
+    gap: 6px;
+  }
+}
+
+#leaderboard {
+  max-width: 480px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+#leaderboard h3 {
+  margin-top: 0;
+}
+
+#leaderboardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#leaderboardList li {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
