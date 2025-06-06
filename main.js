@@ -149,8 +149,21 @@ function handleDrop(x) {
 }
 
 // Input
-canvas.addEventListener('click', e => handleDrop(e.clientX - canvas.getBoundingClientRect().left));
-canvas.addEventListener('touchstart', e => handleDrop(e.touches[0].clientX - canvas.getBoundingClientRect().left));
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const x = (e.clientX - rect.left) * scaleX;
+  handleDrop(x);
+});
+canvas.addEventListener('touchstart', (e) => {
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+
+  const scaleX = canvas.width / rect.width;
+  const x = (touch.clientX - rect.left) * scaleX;
+
+  handleDrop(x);
+});
 
 // Dev shortcut
 document.addEventListener('keydown', e => {
